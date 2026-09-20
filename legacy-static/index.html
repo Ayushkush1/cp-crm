@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CP Atlas — The all-in-one workspace for modern startups</title>
+<meta name="description" content="CP Atlas connects your leads, tasks, documents, payments and team in one ecosystem. Get a free 24-hour live demo workspace. No credit card required.">
+<meta name="theme-color" content="#0f2e26">
+<meta property="og:title" content="CP Atlas — Everything your startup needs to scale, together.">
+<meta property="og:description" content="Leads, tasks, documents, payments and team collaboration in one connected ecosystem.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f2e26'/%3E%3Cpath d='M16 6 6 26h4l6-13 6 13h4z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+    <symbol id="i-task" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 32 32"><path d="M16 4 3 28h5.2l2.6-5.3h10.4l2.6 5.3H29zM12.6 18.4 16 11.5l3.4 6.9z" fill="currentColor" stroke="none" fill-rule="evenodd"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a href="#top" class="brand" aria-label="CP Atlas home">
+      <svg class="brand__mark"><use href="#i-logo"/></svg><span>CP Atlas</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#products">Products</a>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <a href="#" class="btn btn--ghost btn--sm">Sign in</a>
+      <a href="#demo" class="btn btn--dark btn--sm">Get a live demo <svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <svg class="ic"><use href="#i-menu"/></svg>
+    </button>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <a href="#products">Products</a>
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#" class="btn btn--ghost">Sign in</a>
+    <a href="#demo" class="btn btn--dark">Get a live demo</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"><i></i><i></i></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="pill reveal"><svg class="ic"><use href="#i-check"/></svg> All-in-one workspace for modern startups</span>
+      <h1 class="reveal" style="--d:.06s">Everything your startup needs to <em>scale, together.</em></h1>
+      <p class="lead reveal" style="--d:.12s">Manage leads, tasks, documents, payments and your team, all in one connected ecosystem. CP Atlas gives you the tools to focus on growth, not tool chaos.</p>
+      <div class="hero__btns reveal" style="--d:.18s">
+        <a href="#demo" class="btn btn--dark btn--lg">Get a 24-hour demo <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a href="#how" class="btn btn--light btn--lg"><span class="playdot"><svg class="ic"><use href="#i-play"/></svg></span> See how it works</a>
+      </div>
+      <ul class="ticks reveal" style="--d:.24s">
+        <li><svg class="ic"><use href="#i-check"/></svg>No credit card required</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Full access for 24 hours</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Setup in minutes</li>
+      </ul>
+      <div class="proof reveal" style="--d:.3s">
+        <div class="avatars" aria-hidden="true"><b style="--h:158">R</b><b style="--h:24">S</b><b style="--h:262">A</b><b style="--h:340">P</b><b style="--h:200">M</b></div>
+        <span>Loved by <strong>500+</strong> startup teams</span>
+      </div>
+    </div>
+
+    <!-- Dashboard mock -->
+    <div class="hero__visual reveal" style="--d:.15s">
+      <div class="note note--top" aria-hidden="true">Turn leads<br>into revenue <svg viewBox="0 0 60 40"><path d="M4 6c20 0 34 8 44 28M48 34l-9-4M48 34l2-10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="dash" id="dash" role="img" aria-label="CP Atlas dashboard preview showing total leads, active deals, pipeline value, payments, a leads by status chart and a revenue trend chart">
+        <div class="dash__bar"><i></i><i></i><i></i></div>
+        <div class="dash__body">
+          <aside class="dash__side">
+            <div class="dash__brand"><svg><use href="#i-logo"/></svg>CP Atlas</div>
+            <span class="is-on"><svg><use href="#i-chart"/></svg>Dashboard</span>
+            <span><svg><use href="#i-inbox"/></svg>Leads</span>
+            <span><svg><use href="#i-target"/></svg>Opportunities</span>
+            <span><svg><use href="#i-box"/></svg>Companies</span>
+            <span><svg><use href="#i-user"/></svg>Contacts</span>
+            <span><svg><use href="#i-task"/></svg>Tasks</span>
+            <span><svg><use href="#i-doc"/></svg>Documents</span>
+            <span><svg><use href="#i-card"/></svg>Payments</span>
+          </aside>
+          <div class="dash__main">
+            <div class="dash__head"><div><b>Dashboard</b><small>Here's what's happening with your business today.</small></div><span class="dash__search">Search anything…</span></div>
+            <div class="stats">
+              <div class="stat"><small>Total Leads</small><b data-count="248">0</b><em>↑ 12% this month</em></div>
+              <div class="stat"><small>Active Deals</small><b data-count="42">0</b><em>↑ 8% this month</em></div>
+              <div class="stat"><small>Pipeline Value</small><b data-count="12.4" data-prefix="₹" data-suffix="L" data-dec="1">0</b><em>↑ 18% this month</em></div>
+              <div class="stat"><small>Payments</small><b data-count="3.2" data-prefix="₹" data-suffix="L" data-dec="1">0</b><em>↑ 26% this month</em></div>
+            </div>
+            <div class="charts">
+              <div class="card-mini">
+                <small>Leads by Status</small>
+                <div class="donutwrap">
+                  <svg viewBox="0 0 120 120" class="donut">
+                    <circle cx="60" cy="60" r="46" class="d0"/>
+                    <circle cx="60" cy="60" r="46" class="d1" pathLength="100" stroke-dasharray="0 100" data-len="34" data-off="0"/>
+                    <circle cx="60" cy="60" r="46" class="d2" pathLength="100" stroke-dasharray="0 100" data-len="28" data-off="-34"/>
+                    <circle cx="60" cy="60" r="46" class="d3" pathLength="100" stroke-dasharray="0 100" data-len="22" data-off="-62"/>
+                    <circle cx="60" cy="60" r="46" class="d4" pathLength="100" stroke-dasharray="0 100" data-len="16" data-off="-84"/>
+                    <text x="60" y="60" text-anchor="middle" class="dn">248</text>
+                    <text x="60" y="74" text-anchor="middle" class="dl">Total</text>
+                  </svg>
+                  <ul class="legend"><li><i class="l1"></i>New<span>34%</span></li><li><i class="l2"></i>Qualified<span>28%</span></li><li><i class="l3"></i>Follow Up<span>22%</span></li><li><i class="l4"></i>Converted<span>16%</span></li></ul>
+                </div>
+              </div>
+              <div class="card-mini">
+                <small>Revenue Trend <span class="badge">₹3.2L <em>+30%</em></span></small>
+                <div class="bars">
+                  <span style="--h:28%"></span><span style="--h:40%"></span><span style="--h:36%"></span><span style="--h:58%"></span><span style="--h:72%"></span><span style="--h:96%"></span>
+                </div>
+                <div class="axis"><i>Jan</i><i>Feb</i><i>Mar</i><i>Apr</i><i>May</i><i>Jun</i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="toast" aria-hidden="true">
+        <span class="toast__ic"><svg><use href="#i-check"/></svg></span>
+        <div><b>Payment received</b><small>₹48,000 · Razorpay</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPABILITY STRIP ============ -->
+<section class="strip" aria-label="Capabilities">
+  <div class="wrap strip__in">
+    <div class="strip__i"><span class="ico c-green"><svg class="ic"><use href="#i-target"/></svg></span><div><b>Leads &amp; CRM</b><small>Capture, track, convert</small></div></div>
+    <div class="strip__i"><span class="ico c-teal"><svg class="ic"><use href="#i-task"/></svg></span><div><b>Tasks &amp; Documents</b><small>Get work done together</small></div></div>
+    <div class="strip__i"><span class="ico c-mint"><svg class="ic"><use href="#i-card"/></svg></span><div><b>Payment Tracking</b><small>Razorpay &amp; Stripe</small></div></div>
+    <div class="strip__i"><span class="ico c-orange"><svg class="ic"><use href="#i-users"/></svg></span><div><b>Team Collaboration</b><small>Built for growing teams</small></div></div>
+    <div class="strip__i"><span class="ico c-blue"><svg class="ic"><use href="#i-plug"/></svg></span><div><b>Forms &amp; Integrations</b><small>Connect your tools</small></div></div>
+    <div class="strip__i"><span class="ico c-violet"><svg class="ic"><use href="#i-chart"/></svg></span><div><b>Analytics &amp; Reports</b><small>Make better decisions</small></div></div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="sec" id="products">
+  <div class="wrap products">
+    <div class="products__intro reveal">
+      <span class="eyebrow">Our products</span>
+      <h2>A complete ecosystem for modern startups.</h2>
+      <p>Different tools. One connected experience. Everything works together, so you can focus on what really matters: your customers.</p>
+      <a href="#" class="link">Explore all products <svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <article class="pcard reveal" style="--d:.08s">
+      <span class="ico ico--lg c-green"><svg class="ic"><use href="#i-users"/></svg></span>
+      <h3>CP Atlas CRM</h3>
+      <p>Manage leads, opportunities, companies, contacts and payments.</p>
+      <div class="pcard__shot" aria-hidden="true">
+        <div class="mini-table">
+          <div class="mt-r"><b></b><i></i><em class="g">Qualified</em></div>
+          <div class="mt-r"><b></b><i></i><em class="o">Follow up</em></div>
+          <div class="mt-r"><b></b><i></i><em class="g">Converted</em></div>
+          <div class="mt-r"><b></b><i></i><em class="b">New</em></div>
+        </div>
+      </div>
+      <a href="#" class="link">Learn more <svg class="ic"><use href="#i-arrow"/></svg></a>
+    </article>
+
+    <article class="pcard reveal" style="--d:.16s">
+      <span class="ico ico--lg c-mint"><svg class="ic"><use href="#i-task"/></svg></span>
+      <h3>Task Talk</h3>
+      <p>Tasks, docs and team collaboration for everyday work.</p>
+      <div class="pcard__shot" aria-hidden="true">
+        <div class="mini-tasks">
+          <div><u></u><span></span><em class="o">Today</em></div>
+          <div><u class="done"></u><span></span><em class="g">Done</em></div>
+          <div><u></u><span></span><em class="b">Tomorrow</em></div>
+          <div><u></u><span></span><em class="v">Review</em></div>
+        </div>
+      </div>
+      <a href="#" class="link">Learn more <svg class="ic"><use href="#i-arrow"/></svg></a>
+    </article>
+
+    <article class="pcard pcard--soon reveal" style="--d:.24s">
+      <span class="ico ico--lg c-violet"><svg class="ic"><use href="#i-box"/></svg></span>
+      <h3>More products</h3>
+      <p>Forms, knowledge base, invoicing, automation and more, all connected.</p>
+      <div class="soon-grid" aria-hidden="true">
+        <span class="c-green"><svg class="ic"><use href="#i-inbox"/></svg></span>
+        <span class="c-red"><svg class="ic"><use href="#i-doc"/></svg></span>
+        <span class="c-teal"><svg class="ic"><use href="#i-card"/></svg></span>
+        <span class="c-blue"><svg class="ic"><use href="#i-plug"/></svg></span>
+        <span class="c-violet"><svg class="ic"><use href="#i-sliders"/></svg></span>
+        <span class="c-orange"><svg class="ic"><use href="#i-trend"/></svg></span>
+      </div>
+      <span class="link link--muted">Coming soon <svg class="ic"><use href="#i-arrow"/></svg></span>
+    </article>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how" id="how">
+  <div class="wrap how__in">
+    <div class="how__intro reveal">
+      <span class="eyebrow eyebrow--light">How it works</span>
+      <h2>From first lead to long-term growth.</h2>
+      <p>A simple, connected workflow to take you from interest to revenue.</p>
+      <a href="#demo" class="btn btn--white">See it in action <svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+    <ol class="steps">
+      <li class="reveal" style="--d:.05s"><span class="ico ico--lg c-mint"><svg class="ic"><use href="#i-inbox"/></svg></span><h3><em>1.</em> Capture</h3><p>Form submissions land in one place.</p></li>
+      <li class="reveal" style="--d:.15s"><span class="ico ico--lg c-orange"><svg class="ic"><use href="#i-user"/></svg></span><h3><em>2.</em> Qualify</h3><p>Turn submissions into leads.</p></li>
+      <li class="reveal" style="--d:.25s"><span class="ico ico--lg c-violet"><svg class="ic"><use href="#i-chart"/></svg></span><h3><em>3.</em> Close</h3><p>Track opportunities and payments.</p></li>
+      <li class="reveal" style="--d:.35s"><span class="ico ico--lg c-mint"><svg class="ic"><use href="#i-trend"/></svg></span><h3><em>4.</em> Grow</h3><p>Delight customers and scale faster.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <div><span class="eyebrow">Key features</span><h2>Everything you need, in one place.</h2><p>Built for modern teams. Designed for real work.</p></div>
+      <a href="#" class="link">See all features <svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="fgrid">
+      <article class="fcard reveal"><span class="ico c-green"><svg class="ic"><use href="#i-target"/></svg></span><div><h3>Lead &amp; Opportunity Management</h3><p>Capture, track and convert leads into customers.</p></div></article>
+      <article class="fcard reveal" style="--d:.05s"><span class="ico c-blue"><svg class="ic"><use href="#i-card"/></svg></span><div><h3>Payment Tracking</h3><p>Track payments via Razorpay &amp; Stripe in real time.</p></div></article>
+      <article class="fcard reveal" style="--d:.1s"><span class="ico c-orange"><svg class="ic"><use href="#i-inbox"/></svg></span><div><h3>Form Submissions</h3><p>Any form can be mapped to leads automatically.</p></div></article>
+      <article class="fcard reveal" style="--d:.15s"><span class="ico c-teal"><svg class="ic"><use href="#i-doc"/></svg></span><div><h3>Task &amp; Document Management</h3><p>Keep your work, files and conversations organized.</p></div></article>
+      <article class="fcard reveal"><span class="ico c-violet"><svg class="ic"><use href="#i-users"/></svg></span><div><h3>Team Management</h3><p>Add or remove members, roles and permissions.</p></div></article>
+      <article class="fcard reveal" style="--d:.05s"><span class="ico c-red"><svg class="ic"><use href="#i-sliders"/></svg></span><div><h3>Customizable Workspace</h3><p>Choose themes, colors, fonts and make it yours.</p></div></article>
+      <article class="fcard reveal" style="--d:.1s"><span class="ico c-violet"><svg class="ic"><use href="#i-chart"/></svg></span><div><h3>Analytics &amp; Reports</h3><p>Get insights to make better decisions.</p></div></article>
+      <article class="fcard reveal" style="--d:.15s"><span class="ico c-blue"><svg class="ic"><use href="#i-plug"/></svg></span><div><h3>Integrations</h3><p>Connect your favorite tools and services.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="sec sec--tint" id="stories">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <div><span class="eyebrow">Trusted by founders</span><h2>Loved by startup teams.</h2><p>Real stories from real builders.</p></div>
+      <div class="arrows">
+        <button class="round" id="prev" aria-label="Previous testimonials"><svg class="ic"><use href="#i-left"/></svg></button>
+        <button class="round" id="next" aria-label="Next testimonials"><svg class="ic"><use href="#i-right"/></svg></button>
+      </div>
+    </div>
+    <div class="track" id="track" tabindex="0" aria-label="Customer testimonials">
+      <figure class="tcard"><blockquote>“CP Atlas has simplified our entire customer workflow. We went from chaos to clarity in days.”</blockquote><figcaption><span class="av" style="--h:24">RV</span><div><b>Rahul Verma</b><small>CTO, BuildBuddy</small></div></figcaption><div class="stars" role="img" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div></figure>
+      <figure class="tcard"><blockquote>“The integration with payments and form submissions is a game changer.”</blockquote><figcaption><span class="av" style="--h:200">SK</span><div><b>Sneha Kapoor</b><small>Product Manager, LoopScale</small></div></figcaption><div class="stars" role="img" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div></figure>
+      <figure class="tcard"><blockquote>“Clean UI, powerful features and super easy to get started. Highly recommended!”</blockquote><figcaption><span class="av" style="--h:300">AI</span><div><b>Arjun Iyer</b><small>Founder, DevLaunch</small></div></figcaption><div class="stars" role="img" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div></figure>
+      <figure class="tcard"><blockquote>“We finally see every lead, task and payment in one view. Our team stopped living in spreadsheets.”</blockquote><figcaption><span class="av" style="--h:340">PM</span><div><b>Priya Mehta</b><small>Founder, TechNova</small></div></figcaption><div class="stars" role="img" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <div><span class="eyebrow">Pricing</span><h2>Simple, transparent pricing.</h2><p>Choose a plan that fits your stage. Upgrade or downgrade anytime.</p></div>
+      <div class="toggle" role="group" aria-label="Billing period">
+        <button class="is-on" data-bill="monthly" aria-pressed="true">Monthly</button>
+        <button data-bill="yearly" aria-pressed="false">Yearly</button>
+        <span class="save">Save 20%</span>
+      </div>
+    </div>
+    <div class="plans">
+      <!-- PLACEHOLDER PRICES: edit the data-monthly values. Yearly = monthly less 20%, computed in script.js -->
+      <article class="plan reveal">
+        <h3>Starter</h3><p class="plan__sub">Get started with the basics.</p>
+        <div class="price"><b data-monthly="0">₹0</b><span>/ month</span></div>
+        <ul><li>Up to 1,000 leads</li><li>Basic CRM features</li><li>1 workspace</li><li>Email support</li></ul>
+        <a href="#demo" class="btn btn--soft btn--block">Get started</a>
+      </article>
+      <article class="plan plan--hot reveal" style="--d:.07s">
+        <span class="hot">Most popular</span>
+        <h3>Growth</h3><p class="plan__sub">For growing teams.</p>
+        <div class="price"><b data-monthly="999">₹999</b><span>/ month</span></div>
+        <ul><li>Unlimited leads</li><li>Tasks &amp; documents</li><li>Payment tracking</li><li>Up to 5 team members</li><li>Priority support</li></ul>
+        <a href="#demo" class="btn btn--white btn--block">Start free trial</a>
+      </article>
+      <article class="plan reveal" style="--d:.14s">
+        <h3>Business</h3><p class="plan__sub">For scaling startups.</p>
+        <div class="price"><b data-monthly="2499">₹2,499</b><span>/ month</span></div>
+        <ul><li>Advanced analytics</li><li>Custom branding</li><li>More integrations</li><li>Role-based access</li><li>Priority support</li></ul>
+        <a href="#demo" class="btn btn--soft btn--block">Contact sales</a>
+      </article>
+      <article class="plan reveal" style="--d:.21s">
+        <h3>Enterprise</h3><p class="plan__sub">For large organizations.</p>
+        <div class="price"><b class="price--custom">Custom pricing</b></div>
+        <ul><li>Everything in Business</li><li>Dedicated support</li><li>SLA &amp; onboarding</li><li>Custom integrations</li><li>Advanced security</li></ul>
+        <a href="#demo" class="btn btn--soft btn--block">Contact sales</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec sec--tint" id="faq">
+  <div class="wrap faq">
+    <div class="faq__head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions, answered.</h2>
+      <p>Can't find what you need? <a href="mailto:hello@cpatlas.com" class="link-inline">Talk to our team</a>.</p>
+    </div>
+    <div class="faq__list reveal" style="--d:.08s">
+      <details open><summary>How does the 24-hour demo work?<svg class="ic"><use href="#i-plus"/></svg></summary><p>Enter your work email and we spin up a fully loaded demo workspace with sample leads, tasks and payments. You get full access for 24 hours. No credit card needed.</p></details>
+      <details><summary>Can I connect Razorpay or Stripe?<svg class="ic"><use href="#i-plus"/></svg></summary><p>Yes. Payments from both providers are tracked in real time and linked back to the right lead, company and deal.</p></details>
+      <details><summary>How do form submissions become leads?<svg class="ic"><use href="#i-plus"/></svg></summary><p>Map any form to your CRM fields once. Every new submission then lands as a lead automatically, ready to qualify and assign.</p></details>
+      <details><summary>Can my whole team use it?<svg class="ic"><use href="#i-plus"/></svg></summary><p>Add or remove team members at any time and control what each person can see and do with role-based permissions.</p></details>
+      <details><summary>Can I upgrade or downgrade later?<svg class="ic"><use href="#i-plus"/></svg></summary><p>Any time. Plans change instantly and you only pay for what you use going forward.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMO CTA ============ -->
+<section class="cta" id="demo">
+  <div class="wrap cta__in">
+    <div class="cta__copy reveal">
+      <span class="eyebrow eyebrow--dark">Ready to get started?</span>
+      <h2>See CP Atlas in action.</h2>
+      <p>Get a 24-hour live demo workspace and explore every feature. No credit card required.</p>
+      <form class="demo" id="demoForm" novalidate>
+        <label class="sr" for="email">Work email</label>
+        <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+        <button class="btn btn--dark" type="submit">Get my demo <svg class="ic"><use href="#i-arrow"/></svg></button>
+      </form>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+      <ul class="ticks">
+        <li><svg class="ic"><use href="#i-check"/></svg>No credit card required</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Full access for 24 hours</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Setup in minutes</li>
+      </ul>
+    </div>
+    <div class="cta__art reveal" style="--d:.1s" aria-hidden="true">
+      <div class="laptop"><div class="laptop__screen"><svg><use href="#i-logo"/></svg><b>Build.<br>Organize.<br>Grow.</b></div></div>
+      <div class="note note--cta">Same tools.<br>Bigger possibilities.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__brand">
+      <a href="#top" class="brand brand--light"><svg class="brand__mark"><use href="#i-logo"/></svg><span>CP Atlas</span></a>
+      <p>A connected ecosystem for modern startups.</p>
+    </div>
+    <div class="foot__col"><h4>Products</h4><a href="#products">CRM</a><a href="#products">Task Talk</a><a href="#products">Coming Soon</a></div>
+    <div class="foot__col"><h4>Resources</h4><a href="#faq">Documentation</a><a href="#faq">Blog</a><a href="#faq">Help Center</a></div>
+    <div class="foot__col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a></div>
+  </div>
+  <div class="wrap foot__bot">
+    <span>© 2026 CP Atlas. All rights reserved.</span>
+    <span class="foot__legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
