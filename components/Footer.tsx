@@ -1,4 +1,6 @@
-import { Icon } from "./Icon";
+import { Brand } from "./Brand";
+import { wrap } from "./ui";
+import { cn } from "@/lib/cn";
 
 const cols = [
   { title: "Products", links: [["CRM", "#products"], ["Task Talk", "#products"], ["Coming Soon", "#products"]] },
@@ -8,27 +10,30 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer className="foot">
-      <div className="wrap foot__in">
-        <div className="foot__brand">
-          <a href="#top" className="brand brand--light">
-            <Icon name="logo" className="brand__mark" />
-            <span>CP Atlas</span>
-          </a>
-          <p>A connected ecosystem for modern startups.</p>
+    <footer className="bg-forest pb-7 pt-16 text-white">
+      <div className={cn(wrap, "grid grid-cols-[1.6fr_repeat(3,1fr)] gap-8 max-md:grid-cols-2")}>
+        <div className="max-md:col-span-full">
+          <Brand light />
+          <p className="mt-3.5 max-w-[260px] text-[14.5px] text-white/60">A connected ecosystem for modern startups.</p>
         </div>
         {cols.map((c) => (
-          <div className="foot__col" key={c.title}>
-            <h4>{c.title}</h4>
+          <div key={c.title} className="flex flex-col gap-2.5">
+            <h4 className="mb-1.5 text-[13px] font-bold uppercase tracking-[.06em] text-white/50">{c.title}</h4>
             {c.links.map(([label, href]) => (
-              <a key={label} href={href}>{label}</a>
+              <a key={label} href={href} className="text-[14.5px] text-white/80 transition-colors duration-200 hover:text-brand-2">
+                {label}
+              </a>
             ))}
           </div>
         ))}
       </div>
-      <div className="wrap foot__bot">
+      <div className={cn(wrap, "mt-12 flex flex-wrap justify-between gap-4 border-t border-white/10 pt-6 text-[13.5px] text-white/55 max-sm:flex-col")}>
         <span>© {new Date().getFullYear()} CP Atlas. All rights reserved.</span>
-        <span className="foot__legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></span>
+        <span className="flex gap-5">
+          {["Privacy", "Terms", "Cookies"].map((l) => (
+            <a key={l} href="#" className="hover:text-white">{l}</a>
+          ))}
+        </span>
       </div>
     </footer>
   );

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { cn } from "@/lib/cn";
 
 export type IconName =
   | "arrow" | "check" | "users" | "card" | "chart" | "doc" | "task" | "box"
@@ -48,10 +49,22 @@ export function Sprite() {
   );
 }
 
-/** Uses the sprite. Default class "ic" gives an 18px stroke icon. */
-export function Icon({ name, className = "ic" }: { name: IconName; className?: string }) {
+/**
+ * Stroke icon from the sprite. Default size is 18px.
+ * Resize or restyle with Tailwind, e.g. <Icon name="check" className="size-4 stroke-[2.6] text-brand" />
+ */
+export function Icon({ name, className }: { name: IconName; className?: string }) {
   return (
-    <svg className={className || undefined} aria-hidden="true" focusable="false">
+    <svg
+      className={cn("size-[18px] shrink-0", className)}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
       <use href={`#i-${name}`} />
     </svg>
   );

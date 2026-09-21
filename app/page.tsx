@@ -14,7 +14,7 @@ import { RevealObserver } from "@/components/RevealObserver";
 export default function Home() {
   return (
     <>
-      <a className="skip" href="#main">Skip to content</a>
+      <a className="fixed left-4 top-[-60px] z-[100] rounded-lg bg-forest px-4 py-2.5 text-white transition-[top] duration-200 focus:top-3" href="#main">Skip to content</a>
       <Nav />
       <main id="main">
         <Hero />

@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./Icon";
+import { Brand } from "./Brand";
+import { Btn, wrap } from "./ui";
+import { cn } from "@/lib/cn";
 
 const links = [
   { href: "#products", label: "Products" },
@@ -39,40 +42,50 @@ export function Nav() {
   }, []);
 
   return (
-    <header className={`nav${scrolled ? " scrolled" : ""}${open ? " open" : ""}`} id="nav">
-      <div className="wrap nav__in">
-        <a href="#top" className="brand" aria-label="CP Atlas home">
-          <Icon name="logo" className="brand__mark" />
-          <span>CP Atlas</span>
-        </a>
-        <nav className="nav__links" aria-label="Primary">
+    <header
+      id="nav"
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition duration-300",
+        scrolled && "bg-paper/80 shadow-[0_1px_0_var(--color-line)] backdrop-blur-[14px] backdrop-saturate-[1.4]",
+        open && "max-nav:bg-paper",
+      )}
+    >
+      <div className={cn(wrap, "flex h-[72px] items-center justify-between gap-6")}>
+        <Brand />
+        <nav className="flex gap-1.5 max-nav:hidden" aria-label="Primary">
           {links.map((l) => (
-            <a key={l.href} href={l.href}>{l.label}</a>
+            <a
+              key={l.href}
+              href={l.href}
+              className="whitespace-nowrap rounded-[10px] px-3.5 py-2 text-[15px] font-medium text-ink-2 transition duration-200 hover:bg-ink/5 hover:text-ink"
+            >
+              {l.label}
+            </a>
           ))}
         </nav>
-        <div className="nav__cta">
-          <a href="#" className="btn btn--ghost btn--sm">Sign in</a>
-          <a href="#demo" className="btn btn--dark btn--sm">
-            Get a live demo <Icon name="arrow" />
-          </a>
+        <div className="flex gap-2.5 max-nav:hidden">
+          <Btn href="#" variant="ghost" size="sm">Sign in</Btn>
+          <Btn href="#demo" size="sm" arrow>Get a live demo</Btn>
         </div>
         <button
           ref={toggleRef}
-          className="nav__toggle"
+          className="hidden size-11 place-items-center rounded-xl border border-line bg-white max-nav:grid"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="drawer"
           onClick={() => setOpen((o) => !o)}
         >
-          <Icon name={open ? "close" : "menu"} />
+          <Icon name={open ? "close" : "menu"} className="size-[22px]" />
         </button>
       </div>
-      <div className="drawer" id="drawer" hidden={!open}>
+      <div id="drawer" hidden={!open} className="flex flex-col gap-1.5 border-b border-line bg-paper px-6 pb-6 pt-3">
         {links.map((l) => (
-          <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+          <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="border-b border-line py-3 font-medium">
+            {l.label}
+          </a>
         ))}
-        <a href="#" className="btn btn--ghost">Sign in</a>
-        <a href="#demo" className="btn btn--dark" onClick={() => setOpen(false)}>Get a live demo</a>
+        <Btn href="#" variant="ghost" className="mt-2">Sign in</Btn>
+        <Btn href="#demo" className="mt-2" onClick={() => setOpen(false)}>Get a live demo</Btn>
       </div>
     </header>
   );

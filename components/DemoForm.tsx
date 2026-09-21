@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Icon } from "./Icon";
+import { Btn } from "./ui";
+import { cn } from "@/lib/cn";
 
 type Status = { kind: "idle" } | { kind: "ok" | "err"; text: string };
 
@@ -24,8 +25,12 @@ export function DemoForm() {
 
   return (
     <>
-      <form className="demo" onSubmit={onSubmit} noValidate>
-        <label className="sr" htmlFor="email">Work email</label>
+      <form
+        onSubmit={onSubmit}
+        noValidate
+        className="flex max-w-[520px] gap-2.5 rounded-2xl border border-line bg-white p-[7px] shadow-card transition duration-200 focus-within:border-brand focus-within:shadow-[0_0_0_4px_rgba(31,157,107,.15),var(--shadow-card)] max-sm:flex-col max-sm:p-2.5"
+      >
+        <label className="sr-only" htmlFor="email">Work email</label>
         <input
           id="email"
           name="email"
@@ -36,10 +41,19 @@ export function DemoForm() {
           value={email}
           aria-invalid={status.kind === "err" || undefined}
           onChange={(e) => setEmail(e.target.value)}
+          className="min-w-0 flex-1 bg-transparent px-3.5 outline-none max-sm:px-2.5 max-sm:py-3"
         />
-        <button className="btn btn--dark" type="submit">Get my demo <Icon name="arrow" /></button>
+        <Btn type="submit" arrow className="py-[15px]">Get my demo</Btn>
       </form>
-      <p className={`form-msg${status.kind !== "idle" ? ` ${status.kind}` : ""}`} role="status" aria-live="polite">
+      <p
+        role="status"
+        aria-live="polite"
+        className={cn(
+          "mt-3 min-h-[22px] text-sm font-medium",
+          status.kind === "ok" && "text-[#177a53]",
+          status.kind === "err" && "text-[#e5484d]",
+        )}
+      >
         {status.kind !== "idle" ? status.text : ""}
       </p>
     </>

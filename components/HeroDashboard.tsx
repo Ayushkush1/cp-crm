@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Icon, type IconName } from "./Icon";
-import { cssVar, delay } from "@/lib/utils";
+import { cn } from "@/lib/cn";
+import { delay } from "@/lib/utils";
 
 const sideItems: { icon: IconName; label: string; on?: boolean }[] = [
   { icon: "chart", label: "Dashboard", on: true },
@@ -22,17 +23,12 @@ const stats = [
   { label: "Payments", value: 3.2, dec: 1, prefix: "₹", suffix: "L", delta: "↑ 26% this month" },
 ];
 
+// stroke = ring colour, dot = legend dot colour class
 const donut = [
-  { cls: "d1", len: 34, off: 0 },
-  { cls: "d2", len: 28, off: -34 },
-  { cls: "d3", len: 22, off: -62 },
-  { cls: "d4", len: 16, off: -84 },
-];
-const legend = [
-  { cls: "l1", label: "New", pct: "34%" },
-  { cls: "l2", label: "Qualified", pct: "28%" },
-  { cls: "l3", label: "Follow Up", pct: "22%" },
-  { cls: "l4", label: "Converted", pct: "16%" },
+  { stroke: "#8b6cf0", dot: "bg-[#8b6cf0]", label: "New", pct: 34, off: 0 },
+  { stroke: "#1f9d6b", dot: "bg-[#1f9d6b]", label: "Qualified", pct: 28, off: -34 },
+  { stroke: "#f5a25b", dot: "bg-[#f5a25b]", label: "Follow Up", pct: 22, off: -62 },
+  { stroke: "#33c48a", dot: "bg-[#33c48a]", label: "Converted", pct: 16, off: -84 },
 ];
 const bars = [28, 40, 36, 58, 72, 96];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
@@ -59,6 +55,17 @@ function Counter({ value, dec, prefix, suffix, play, reduce }: {
   return <>{prefix}{dec ? n.toFixed(dec) : Math.round(n)}{suffix}</>;
 }
 
+/* Shared 3D screen styling. Tweak the rotate values to change the tilt. */
+const screen3d =
+  "relative overflow-hidden rounded-[22px] border border-white/90 bg-white origin-[70%_50%] will-change-transform [transform-style:preserve-3d] " +
+  "transition-[transform,box-shadow] duration-[800ms] ease-soft " +
+  "[transform:rotateY(-16deg)_rotateX(5deg)_rotateZ(1.2deg)] group-hover/visual:[transform:rotateY(-9deg)_rotateX(3deg)_rotateZ(.6deg)] " +
+  "shadow-[-2px_2px_0_#d9efe4,-5px_5px_0_#bfe4d2,-8px_8px_0_#a3d8bf,-11px_11px_0_#8bcbae,-22px_34px_44px_-10px_rgba(15,46,38,.35),-50px_70px_90px_-30px_rgba(15,46,38,.35)] " +
+  "max-lg:[transform:rotateY(-7deg)_rotateX(3deg)] max-lg:shadow-[-2px_2px_0_#d9efe4,-5px_5px_0_#bfe4d2,-8px_8px_0_#a3d8bf,-18px_28px_40px_-12px_rgba(15,46,38,.35)]";
+
+const miniCard = "min-w-0 rounded-xl border border-line bg-white p-3";
+const miniTitle = "mb-2 flex items-center justify-between text-[11px] font-semibold";
+
 export function HeroDashboard() {
   const [play, setPlay] = useState(false);
   const [reduce, setReduce] = useState(false);
@@ -71,86 +78,143 @@ export function HeroDashboard() {
   }, []);
 
   return (
-    <div className="hero__visual reveal" style={delay(0.15)}>
-      <div className="note note--top" aria-hidden="true">
+    <div
+      className="reveal group/visual relative mt-[34px] [perspective-origin:20%_40%] [perspective:1500px]"
+      style={delay(0.15)}
+    >
+      <div
+        aria-hidden="true"
+        className="absolute -top-[55px] right-1.5 z-[5] text-left font-serif text-sm italic leading-[1.2] text-ink-2 max-sm:hidden"
+      >
         Turn leads<br />into revenue
-        <svg viewBox="0 0 60 40">
+        <svg viewBox="0 0 60 40" className="ml-[-6px] mt-0.5 h-8 w-[50px] [transform:scaleX(-1)_rotate(20deg)]">
           <path d="M4 6c20 0 34 8 44 28M48 34l-9-4M48 34l2-10" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
       </div>
 
       <div
-        className={`dash${play ? " play" : ""}`}
+        className={screen3d}
         role="img"
         aria-label="CP Atlas dashboard preview showing total leads, active deals, pipeline value, payments, a leads by status chart and a revenue trend chart"
       >
-        <div className="dash__bar"><i /><i /><i /></div>
-        <div className="dash__body">
-          <aside className="dash__side">
-            <div className="dash__brand"><Icon name="logo" className="" />CP Atlas</div>
+        {/* window bar */}
+        <div className="flex gap-1.5 border-b border-line bg-[#fbfaf6] px-4 py-3">
+          <i className="size-[9px] rounded-full bg-[#f3b3a6]" />
+          <i className="size-[9px] rounded-full bg-[#f1d79a]" />
+          <i className="size-[9px] rounded-full bg-[#b6dfc6]" />
+        </div>
+
+        <div className="grid grid-cols-[128px_1fr] max-sm:grid-cols-1">
+          <aside className="flex flex-col gap-0.5 border-r border-line bg-[#fbfaf6] px-3 py-4 text-[11.5px] text-ink-2 max-sm:hidden">
+            <div className="mb-3.5 flex items-center gap-2 px-1.5 text-[13px] font-bold text-ink">
+              <Icon name="logo" className="size-5 text-forest" />CP Atlas
+            </div>
             {sideItems.map((s) => (
-              <span key={s.label} className={s.on ? "is-on" : undefined}>
-                <Icon name={s.icon} className="" />{s.label}
+              <span
+                key={s.label}
+                className={cn("flex items-center gap-[9px] rounded-lg px-2.5 py-2", s.on && "bg-mint font-semibold text-forest")}
+              >
+                <Icon name={s.icon} className="size-3.5" />{s.label}
               </span>
             ))}
           </aside>
-          <div className="dash__main">
-            <div className="dash__head">
-              <div><b>Dashboard</b><small>Here&apos;s what&apos;s happening with your business today.</small></div>
-              <span className="dash__search">Search anything…</span>
+
+          <div className="min-w-0 px-3.5 py-4">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <b className="block text-base">Dashboard</b>
+                <small className="text-[10.5px] text-ink-3">Here&apos;s what&apos;s happening with your business today.</small>
+              </div>
+              <span className="whitespace-nowrap rounded-lg border border-line px-3 py-1.5 text-[11px] text-ink-3">Search anything…</span>
             </div>
-            <div className="stats">
+
+            <div className="my-3.5 grid grid-cols-4 gap-2 max-sm:grid-cols-2">
               {stats.map((s) => (
-                <div className="stat" key={s.label}>
-                  <small>{s.label}</small>
-                  <b><Counter {...s} play={play} reduce={reduce} /></b>
-                  <em>{s.delta}</em>
+                <div className="min-w-0 rounded-xl border border-line bg-white p-2.5" key={s.label}>
+                  <small className="block whitespace-nowrap text-[9.5px] text-ink-3">{s.label}</small>
+                  <b className="my-0.5 block whitespace-nowrap text-lg font-bold tracking-[-.02em]">
+                    <Counter {...s} play={play} reduce={reduce} />
+                  </b>
+                  <em className="whitespace-nowrap text-[8.5px] font-semibold not-italic text-brand">{s.delta}</em>
                 </div>
               ))}
             </div>
-            <div className="charts">
-              <div className="card-mini">
-                <small>Leads by Status</small>
-                <div className="donutwrap">
-                  <svg viewBox="0 0 120 120" className="donut">
-                    <circle cx="60" cy="60" r="46" className="d0" />
+
+            <div className="grid grid-cols-2 gap-2.5 max-sm:grid-cols-1">
+              <div className={miniCard}>
+                <small className={miniTitle}>Leads by Status</small>
+                <div className="flex items-center gap-2">
+                  <svg viewBox="0 0 120 120" className="w-[84px] shrink-0 -rotate-90">
+                    <circle cx="60" cy="60" r="46" fill="none" stroke="#f0eee6" strokeWidth="14" />
                     {donut.map((d) => (
                       <circle
-                        key={d.cls}
+                        key={d.label}
                         cx="60" cy="60" r="46"
-                        className={d.cls}
+                        fill="none"
+                        stroke={d.stroke}
+                        strokeWidth="14"
                         pathLength={100}
-                        strokeDasharray={play ? `${d.len} ${100 - d.len}` : "0 100"}
+                        strokeDasharray={play ? `${d.pct} ${100 - d.pct}` : "0 100"}
                         strokeDashoffset={play ? d.off : 0}
+                        className="transition-[stroke-dasharray] delay-300 duration-[1200ms] ease-soft"
                       />
                     ))}
-                    <text x="60" y="60" textAnchor="middle" className="dn">248</text>
-                    <text x="60" y="74" textAnchor="middle" className="dl">Total</text>
+                    <text x="60" y="60" textAnchor="middle" className="fill-ink text-[22px] font-bold [transform-origin:60px_60px] [transform:rotate(90deg)]">248</text>
+                    <text x="60" y="74" textAnchor="middle" className="fill-ink-3 text-[9px] [transform-origin:60px_60px] [transform:rotate(90deg)]">Total</text>
                   </svg>
-                  <ul className="legend">
-                    {legend.map((l) => (
-                      <li key={l.label}><i className={l.cls} />{l.label}<span>{l.pct}</span></li>
+                  <ul className="grid min-w-0 flex-1 gap-1.5 text-[9.5px] text-ink-2">
+                    {donut.map((d) => (
+                      <li key={d.label} className="flex items-center gap-1.5">
+                        <i className={cn("size-[7px] rounded-full", d.dot)} />{d.label}
+                        <span className="ml-auto font-semibold">{d.pct}%</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
               </div>
-              <div className="card-mini">
-                <small>Revenue Trend <span className="badge">₹3.2L <em>+30%</em></span></small>
-                <div className="bars">
+
+              <div className={miniCard}>
+                <small className={miniTitle}>
+                  Revenue Trend
+                  <span className="text-right text-xs font-bold leading-[1.1]">
+                    ₹3.2L <em className="block text-[9.5px] font-semibold not-italic text-brand">+30%</em>
+                  </span>
+                </small>
+                <div className="flex h-[92px] items-end gap-2 pt-1.5">
                   {bars.map((h, i) => (
-                    <span key={i} style={cssVar("--h", `${h}%`)} />
+                    <span
+                      key={i}
+                      className="flex-1 rounded-b-[2px] rounded-t-[5px] bg-gradient-to-b from-brand-2 to-forest-2 transition-[height] duration-1000 ease-soft"
+                      style={{ height: play ? `${h}%` : 0, transitionDelay: `${i * 0.08}s` }}
+                    />
                   ))}
                 </div>
-                <div className="axis">{months.map((m) => <i key={m}>{m}</i>)}</div>
+                <div className="mt-1.5 flex justify-between gap-2 text-[9px] text-ink-3">
+                  {months.map((m) => <i key={m} className="flex-1 text-center not-italic">{m}</i>)}
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* glossy reflection */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[5] rounded-[inherit] bg-[linear-gradient(112deg,rgba(255,255,255,.55)_0%,rgba(255,255,255,.14)_22%,transparent_42%),linear-gradient(0deg,rgba(15,46,38,.06),transparent_30%)]"
+        />
       </div>
 
-      <div className="toast" aria-hidden="true">
-        <span className="toast__ic"><Icon name="check" className="" /></span>
-        <div><b>Payment received</b><small>₹48,000 · Razorpay</small></div>
+      <div
+        aria-hidden="true"
+        className="absolute -bottom-[26px] -left-7 flex animate-float items-center gap-3 rounded-[14px] border border-line bg-white py-3 pl-3 pr-[18px] shadow-card max-sm:-bottom-[30px] max-sm:left-3"
+      >
+        <span className="grid size-[34px] place-items-center rounded-[10px] bg-mint text-brand">
+          <Icon name="check" className="stroke-[2.6]" />
+        </span>
+        <div>
+          <b className="block text-[13px] leading-[1.2]">Payment received</b>
+          <small className="text-[11.5px] text-ink-3">₹48,000 · Razorpay</small>
+        </div>
       </div>
     </div>
   );
