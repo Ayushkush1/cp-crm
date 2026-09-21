@@ -120,9 +120,15 @@ h2{font-size:clamp(32px,4.2vw,48px)}
 .avatars b:first-child{margin-left:0}
 
 /* dashboard mock */
-.hero__visual{position:relative;perspective:1600px;margin-top:34px}
-.dash{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden;transform:rotateY(-4deg) rotateX(2deg);transform-origin:left center;transition:transform .6s var(--ease)}
-.hero__visual:hover .dash{transform:none}
+.hero__visual{position:relative;perspective:1500px;perspective-origin:20% 40%;margin-top:34px}
+.dash{position:relative;background:var(--surface);border:1px solid rgba(255,255,255,.9);border-radius:22px;overflow:hidden;
+  transform:rotateY(-16deg) rotateX(5deg) rotateZ(1.2deg) translateZ(0);transform-origin:70% 50%;transform-style:preserve-3d;will-change:transform;
+  transition:transform .8s var(--ease),box-shadow .8s var(--ease);
+  box-shadow:-2px 2px 0 #d9efe4,-5px 5px 0 #bfe4d2,-8px 8px 0 #a3d8bf,-11px 11px 0 #8bcbae,
+    -22px 34px 44px -10px rgba(15,46,38,.35),-50px 70px 90px -30px rgba(15,46,38,.35)}
+.dash::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:5;
+  background:linear-gradient(112deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.14) 22%,transparent 42%),linear-gradient(0deg,rgba(15,46,38,.06),transparent 30%)}
+.hero__visual:hover .dash{transform:rotateY(-9deg) rotateX(3deg) rotateZ(.6deg)}
 .dash__bar{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);background:#fbfaf6}
 .dash__bar i{width:9px;height:9px;border-radius:50%;background:#e2ddce}
 .dash__bar i:nth-child(1){background:#f3b3a6}.dash__bar i:nth-child(2){background:#f1d79a}.dash__bar i:nth-child(3){background:#b6dfc6}
@@ -338,7 +344,7 @@ details p{padding:0 24px 22px;color:var(--ink-2);max-width:60ch}
 @media (max-width:1100px){
   .hero__grid{grid-template-columns:minmax(0,1fr);gap:72px}
   .hero__copy{max-width:640px}
-  .dash{transform:none}
+  .dash{transform:rotateY(-7deg) rotateX(3deg);box-shadow:-2px 2px 0 #d9efe4,-5px 5px 0 #bfe4d2,-8px 8px 0 #a3d8bf,-18px 28px 40px -12px rgba(15,46,38,.35)}
   .strip__in{grid-template-columns:repeat(3,minmax(0,1fr))}
   .strip__i::before{display:none}
   .products{grid-template-columns:repeat(3,minmax(0,1fr))}

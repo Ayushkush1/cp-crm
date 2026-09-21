@@ -29,14 +29,7 @@ export function Hero() {
               <span className="playdot"><Icon name="play" /></span> See how it works
             </a>
           </div>
-          <div className="proof reveal" style={delay(0.3)}>
-            <div className="avatars" aria-hidden="true">
-              {avatars.map((a) => (
-                <b key={a.l} style={cssVar("--h", a.h)}>{a.l}</b>
-              ))}
-            </div>
-            <span>Loved by <strong>500+</strong> startup teams</span>
-          </div>
+        
         </div>
         <HeroDashboard />
       </div>
