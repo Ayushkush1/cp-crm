@@ -1,5 +1,5 @@
 import { Icon, type IconName } from "./Icon";
-import { Chip, Eyebrow, Tag, TextLink, tones, wrap, sectionY, type TagTone, type Tone } from "./ui";
+import { Chip, Eyebrow, Glow, Tag, TextLink, tones, wrap, sectionY, type TagTone, type Tone } from "./ui";
 import { cn } from "@/lib/cn";
 import { delay } from "@/lib/utils";
 
@@ -33,11 +33,12 @@ const row = "grid items-center gap-2.5 rounded-lg bg-white px-2.5 py-2";
 
 export function Products() {
   return (
-    <section className={sectionY} id="products">
+    <section className={cn(sectionY, "relative overflow-hidden")} id="products">
+      <Glow />
       <div
         className={cn(
           wrap,
-          "grid grid-cols-[minmax(0,1.05fr)_repeat(3,minmax(0,1fr))] items-stretch gap-5 max-lg:grid-cols-3 max-sm:grid-cols-1",
+          "relative grid grid-cols-[minmax(0,1.05fr)_repeat(3,minmax(0,1fr))] items-stretch gap-5 max-lg:grid-cols-3 max-sm:grid-cols-1",
         )}
       >
         <div className="reveal flex flex-col items-start py-4 pr-6 max-lg:col-span-full max-lg:p-0 max-lg:pb-3">
@@ -50,9 +51,8 @@ export function Products() {
         </div>
 
         <article className={card} style={delay(0.08)}>
-          <Chip tone="green" large><Icon name="users" className="size-6" /></Chip>
           <h3 className={cardTitle}>CP Atlas CRM</h3>
-          <p className={cardText}>Manage leads, opportunities, companies, contacts and payments.</p>
+          <p className={cardText}>Manage leads, companies, contacts and payments.</p>
           <div className={shot} aria-hidden="true">
             <div className="grid gap-2">
               {crmRows.map((r, i) => (
@@ -68,8 +68,7 @@ export function Products() {
         </article>
 
         <article className={card} style={delay(0.16)}>
-          <Chip tone="mint" large><Icon name="task" className="size-6" /></Chip>
-          <h3 className={cardTitle}>Task Talk</h3>
+          <h3 className={cardTitle}>Task Doc</h3>
           <p className={cardText}>Tasks, docs and team collaboration for everyday work.</p>
           <div className={shot} aria-hidden="true">
             <div className="grid gap-2">
@@ -86,7 +85,6 @@ export function Products() {
         </article>
 
         <article className={card} style={delay(0.24)}>
-          <Chip tone="violet" large><Icon name="box" className="size-6" /></Chip>
           <h3 className={cardTitle}>More products</h3>
           <p className={cardText}>Forms, knowledge base, invoicing, automation and more, all connected.</p>
           <div className="mb-1 mt-2.5 grid grid-cols-3 gap-2.5" aria-hidden="true">

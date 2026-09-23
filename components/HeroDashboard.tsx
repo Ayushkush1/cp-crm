@@ -57,11 +57,19 @@ function Counter({ value, dec, prefix, suffix, play, reduce }: {
 
 /* Shared 3D screen styling. Tweak the rotate values to change the tilt. */
 const screen3d =
-  "relative overflow-hidden rounded-[22px] border border-white/90 bg-white origin-[70%_50%] will-change-transform [transform-style:preserve-3d] " +
+  "relative rounded-[22px] border border-white/90 bg-white origin-[70%_50%] will-change-transform [transform-style:preserve-3d] " +
   "transition-[transform,box-shadow] duration-[800ms] ease-soft " +
   "[transform:rotateY(-16deg)_rotateX(5deg)_rotateZ(1.2deg)] group-hover/visual:[transform:rotateY(-9deg)_rotateX(3deg)_rotateZ(.6deg)] " +
   "shadow-[-2px_2px_0_#d9efe4,-5px_5px_0_#bfe4d2,-8px_8px_0_#a3d8bf,-11px_11px_0_#8bcbae,-22px_34px_44px_-10px_rgba(15,46,38,.35),-50px_70px_90px_-30px_rgba(15,46,38,.35)] " +
   "max-lg:[transform:rotateY(-7deg)_rotateX(3deg)] max-lg:shadow-[-2px_2px_0_#d9efe4,-5px_5px_0_#bfe4d2,-8px_8px_0_#a3d8bf,-18px_28px_40px_-12px_rgba(15,46,38,.35)]";
+
+/* Cards that float in front of the screen (real 3D depth). Change translateZ to adjust the height. */
+const liftBar =
+  "[transform:translateZ(42px)] shadow-[-1px_2px_0_#14634a,-2px_4px_0_#0f5040,-3px_6px_0_#0c4031,-10px_16px_16px_-6px_rgba(15,46,38,.5)] group-hover/visual:[transform:translateZ(54px)]";
+const liftTab =
+  "relative z-10 transition-[transform,box-shadow] duration-[800ms] ease-soft [transform:translateZ(20px)] shadow-[0_10px_18px_-8px_rgba(15,46,38,.35),0_0_0_1px_rgba(31,157,107,.15)] group-hover/visual:[transform:translateZ(30px)]";
+const liftSmall =
+  "relative z-10 [transform:translateZ(28px)] shadow-[0_20px_32px_-12px_rgba(15,46,38,.35),0_0_0_1px_rgba(255,255,255,.7)] transition-[transform,box-shadow] duration-[800ms] ease-soft group-hover/visual:[transform:translateZ(40px)]";
 
 const miniCard = "min-w-0 rounded-xl border border-line bg-white p-3";
 const miniTitle = "mb-2 flex items-center justify-between text-[11px] font-semibold";
@@ -87,7 +95,7 @@ export function HeroDashboard() {
         className="absolute -top-[55px] right-1.5 z-[5] text-left font-serif text-sm italic leading-[1.2] text-ink-2 max-sm:hidden"
       >
         Turn leads<br />into revenue
-        <svg viewBox="0 0 60 40" className="ml-[-6px] mt-0.5 h-8 w-[50px] [transform:scaleX(-1)_rotate(20deg)]">
+        <svg viewBox="0 0 60 40" className="ml-[-6px] mt-1 h-8 w-[50px] [transform:scaleX(-1)_rotate(20deg)]">
           <path d="M4 6c20 0 34 8 44 28M48 34l-9-4M48 34l2-10" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
       </div>
@@ -98,28 +106,28 @@ export function HeroDashboard() {
         aria-label="CP Atlas dashboard preview showing total leads, active deals, pipeline value, payments, a leads by status chart and a revenue trend chart"
       >
         {/* window bar */}
-        <div className="flex gap-1.5 border-b border-line bg-[#fbfaf6] px-4 py-3">
+        <div className="flex gap-1.5 rounded-t-[21px] border-b border-line bg-[#fbfaf6] px-4 py-3">
           <i className="size-[9px] rounded-full bg-[#f3b3a6]" />
           <i className="size-[9px] rounded-full bg-[#f1d79a]" />
           <i className="size-[9px] rounded-full bg-[#b6dfc6]" />
         </div>
 
-        <div className="grid grid-cols-[128px_1fr] max-sm:grid-cols-1">
-          <aside className="flex flex-col gap-0.5 border-r border-line bg-[#fbfaf6] px-3 py-4 text-[11.5px] text-ink-2 max-sm:hidden">
+        <div className="grid grid-cols-[128px_1fr] [transform-style:preserve-3d] max-sm:grid-cols-1">
+          <aside className="flex flex-col gap-0.5 rounded-bl-[21px] [transform-style:preserve-3d] border-r border-line bg-[#fbfaf6] px-3 py-4 text-[11.5px] text-ink-2 max-sm:hidden">
             <div className="mb-3.5 flex items-center gap-2 px-1.5 text-[13px] font-bold text-ink">
               <Icon name="logo" className="size-5 text-forest" />CP Atlas
             </div>
             {sideItems.map((s) => (
               <span
                 key={s.label}
-                className={cn("flex items-center gap-[9px] rounded-lg px-2.5 py-2", s.on && "bg-mint font-semibold text-forest")}
+                className={cn("flex items-center gap-[9px] rounded-lg px-2.5 py-2", s.on && cn("bg-mint font-semibold text-forest", liftTab))}
               >
                 <Icon name={s.icon} className="size-3.5" />{s.label}
               </span>
             ))}
           </aside>
 
-          <div className="min-w-0 px-3.5 py-4">
+          <div className="min-w-0 px-3.5 py-4 [transform-style:preserve-3d]">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <b className="block text-base">Dashboard</b>
@@ -128,9 +136,9 @@ export function HeroDashboard() {
               <span className="whitespace-nowrap rounded-lg border border-line px-3 py-1.5 text-[11px] text-ink-3">Search anything…</span>
             </div>
 
-            <div className="my-3.5 grid grid-cols-4 gap-2 max-sm:grid-cols-2">
+            <div className="my-3.5 grid grid-cols-4 gap-2 [transform-style:preserve-3d] max-sm:grid-cols-2">
               {stats.map((s) => (
-                <div className="min-w-0 rounded-xl border border-line bg-white p-2.5" key={s.label}>
+                <div className={cn("min-w-0 rounded-xl border border-line bg-white p-2.5", s.label === "Pipeline Value" && liftSmall)} key={s.label}>
                   <small className="block whitespace-nowrap text-[9.5px] text-ink-3">{s.label}</small>
                   <b className="my-0.5 block whitespace-nowrap text-lg font-bold tracking-[-.02em]">
                     <Counter {...s} play={play} reduce={reduce} />
@@ -140,7 +148,7 @@ export function HeroDashboard() {
               ))}
             </div>
 
-            <div className="grid grid-cols-2 gap-2.5 max-sm:grid-cols-1">
+            <div className="grid grid-cols-2 gap-2.5 [transform-style:preserve-3d] max-sm:grid-cols-1">
               <div className={miniCard}>
                 <small className={miniTitle}>Leads by Status</small>
                 <div className="flex items-center gap-2">
@@ -173,23 +181,23 @@ export function HeroDashboard() {
                 </div>
               </div>
 
-              <div className={miniCard}>
+              <div className={cn(miniCard, "[transform-style:preserve-3d]")}>
                 <small className={miniTitle}>
                   Revenue Trend
                   <span className="text-right text-xs font-bold leading-[1.1]">
                     ₹3.2L <em className="block text-[9.5px] font-semibold not-italic text-brand">+30%</em>
                   </span>
                 </small>
-                <div className="flex h-[92px] items-end gap-2 pt-1.5">
+                <div className="flex h-[92px] items-end gap-2 pt-1 pl-1 [transform-style:preserve-3d]">
                   {bars.map((h, i) => (
                     <span
                       key={i}
-                      className="flex-1 rounded-b-[2px] rounded-t-[5px] bg-gradient-to-b from-brand-2 to-forest-2 transition-[height] duration-1000 ease-soft"
+                      className={cn("flex-1 rounded-b-[2px] rounded-t-[5px] bg-gradient-to-b from-brand-2 to-forest-2 transition-[height,transform] duration-1000 ease-soft", liftBar)}
                       style={{ height: play ? `${h}%` : 0, transitionDelay: `${i * 0.08}s` }}
                     />
                   ))}
                 </div>
-                <div className="mt-1.5 flex justify-between gap-2 text-[9px] text-ink-3">
+                <div className="mt-2.5 flex justify-between gap-2 text-[9px] text-ink-3">
                   {months.map((m) => <i key={m} className="flex-1 text-center not-italic">{m}</i>)}
                 </div>
               </div>
@@ -206,7 +214,7 @@ export function HeroDashboard() {
 
       <div
         aria-hidden="true"
-        className="absolute -bottom-[26px] -left-7 flex animate-float items-center gap-3 rounded-[14px] border border-line bg-white py-3 pl-3 pr-[18px] shadow-card max-sm:-bottom-[30px] max-sm:left-3"
+        className="absolute -bottom-[26px] -left-7 z-10 flex animate-float items-center gap-3 rounded-[14px] border border-line bg-white py-3 pl-3 pr-[18px] shadow-card max-sm:-bottom-[30px] max-sm:left-3"
       >
         <span className="grid size-[34px] place-items-center rounded-[10px] bg-mint text-brand">
           <Icon name="check" className="stroke-[2.6]" />

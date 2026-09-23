@@ -18,11 +18,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CP Atlas — The all-in-one workspace for modern startups",
+  title: "CP Atlas - The all in one workspace for modern startups",
   description:
     "CP Atlas connects your leads, tasks, documents, payments and team in one ecosystem. Get a free 24-hour live demo workspace. No credit card required.",
   openGraph: {
-    title: "CP Atlas — Everything your startup needs to scale, together.",
+    title: "CP Atlas - Everything your startup needs to scale, together.",
     description:
       "Leads, tasks, documents, payments and team collaboration in one connected ecosystem.",
     type: "website",

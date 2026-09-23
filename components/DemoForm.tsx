@@ -28,7 +28,7 @@ export function DemoForm() {
       <form
         onSubmit={onSubmit}
         noValidate
-        className="flex max-w-[520px] gap-2.5 rounded-2xl border border-line bg-white p-[7px] shadow-card transition duration-200 focus-within:border-brand focus-within:shadow-[0_0_0_4px_rgba(31,157,107,.15),var(--shadow-card)] max-sm:flex-col max-sm:p-2.5"
+        className="flex max-w-[520px] gap-2.5 rounded-full border border-line bg-white p-[7px] pl-3 shadow-card transition duration-200 focus-within:border-brand focus-within:shadow-[0_0_0_4px_rgba(31,157,107,.15),var(--shadow-card)] max-sm:flex-col max-sm:rounded-3xl max-sm:p-2.5"
       >
         <label className="sr-only" htmlFor="email">Work email</label>
         <input
@@ -43,7 +43,7 @@ export function DemoForm() {
           onChange={(e) => setEmail(e.target.value)}
           className="min-w-0 flex-1 bg-transparent px-3.5 outline-none max-sm:px-2.5 max-sm:py-3"
         />
-        <Btn type="submit" arrow className="py-[15px]">Get my demo</Btn>
+        <Btn type="submit" arrow>Get demo</Btn>
       </form>
       <p
         role="status"

@@ -3,14 +3,14 @@ import { wrap } from "./ui";
 import { cn } from "@/lib/cn";
 
 const cols = [
-  { title: "Products", links: [["CRM", "#products"], ["Task Talk", "#products"], ["Coming Soon", "#products"]] },
+  { title: "Products", links: [["CRM", "#products"], ["Task Doc", "#products"], ["Coming Soon", "#products"]] },
   { title: "Resources", links: [["Documentation", "#faq"], ["Blog", "#faq"], ["Help Center", "#faq"]] },
   { title: "Company", links: [["About", "#"], ["Careers", "#"], ["Contact", "#"]] },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-forest pb-7 pt-16 text-white">
+    <footer className="bg-forest pb-7 pt-16 text-white mx-1 mb-1 rounded-t-[60px] rounded-b-[20px]">
       <div className={cn(wrap, "grid grid-cols-[1.6fr_repeat(3,1fr)] gap-8 max-md:grid-cols-2")}>
         <div className="max-md:col-span-full">
           <Brand light />

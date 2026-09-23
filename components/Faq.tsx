@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "./Icon";
-import { Eyebrow, wrap, sectionY } from "./ui";
+import { Eyebrow, Glow, wrap, sectionY } from "./ui";
 import { cn } from "@/lib/cn";
 import { delay } from "@/lib/utils";
 
@@ -18,8 +18,9 @@ export function Faq() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className={cn(sectionY, "bg-gradient-to-b from-paper-2 to-paper")} id="faq">
-      <div className={cn(wrap, "grid grid-cols-[minmax(0,.8fr)_minmax(0,1.4fr)] items-start gap-16 max-lg:grid-cols-[minmax(0,1fr)] max-lg:gap-8")}>
+    <section className={cn(sectionY, "relative overflow-hidden")} id="faq">
+      <Glow />
+      <div className={cn(wrap, "relative grid grid-cols-[minmax(0,.8fr)_minmax(0,1.4fr)] items-start gap-16 max-lg:grid-cols-[minmax(0,1fr)] max-lg:gap-8")}>
         <div className="reveal">
           <Eyebrow>FAQ</Eyebrow>
           <h2>Questions, answered.</h2>
@@ -29,25 +30,50 @@ export function Faq() {
           </p>
         </div>
         <div className="reveal grid gap-3" style={delay(0.08)}>
-          {faqs.map((f, i) => (
-            <details
-              key={f.q}
-              open={open === i}
-              className="group rounded-2xl border border-line bg-white transition-shadow duration-200 open:shadow-soft"
-            >
-              <summary
-                className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-[16.5px] font-semibold [&::-webkit-details-marker]:hidden"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpen(open === i ? -1 : i);
-                }}
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div
+                key={f.q}
+                className={cn(
+                  "overflow-hidden rounded-2xl border border-line bg-white transition-shadow duration-300 ease-soft",
+                  isOpen && "shadow-soft",
+                )}
               >
-                {f.q}
-                <Icon name="plus" className="text-ink-3 transition-transform duration-300 ease-soft group-open:rotate-45 group-open:text-brand" />
-              </summary>
-              <p className="max-w-[60ch] px-6 pb-[22px] text-ink-2">{f.a}</p>
-            </details>
-          ))}
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() => setOpen(isOpen ? -1 : i)}
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[16.5px] font-semibold"
+                >
+                  {f.q}
+                  <Icon
+                    name="plus"
+                    className={cn(
+                      "shrink-0 text-ink-3 transition-transform duration-[380ms] ease-soft",
+                      isOpen && "rotate-45 text-brand",
+                    )}
+                  />
+                </button>
+                {/* Animates height via grid-template-rows (0fr -> 1fr), so it works without measuring pixel heights in JS. */}
+                <div
+                  className="grid transition-[grid-template-rows] duration-[380ms] ease-soft"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                >
+                  <div className="min-h-0 overflow-hidden">
+                    <p
+                      className={cn(
+                        "max-w-[60ch] px-6 pb-[22px] text-ink-2 transition-opacity duration-300 ease-soft",
+                        isOpen ? "opacity-100 delay-100" : "opacity-0",
+                      )}
+                    >
+                      {f.a}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

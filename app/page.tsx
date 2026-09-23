@@ -1,6 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { Strip } from "@/components/Strip";
+import { BuiltBy } from "@/components/BuiltBy";
 import { Products } from "@/components/Products";
 import { How } from "@/components/How";
 import { Features } from "@/components/Features";
@@ -18,7 +18,7 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
-        <Strip />
+        <BuiltBy />
         <Products />
         <How />
         <Features />

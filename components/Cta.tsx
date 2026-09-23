@@ -26,19 +26,19 @@ export function Cta() {
           </ul>
         </div>
 
-        <div className="reveal relative min-h-[460px] self-end max-md:min-h-[360px]" style={delay(0.1)} aria-hidden="true">
-          <div className="absolute bottom-14 left-1/2 w-[min(520px,100%)] -translate-x-1/2">
+        <div className="reveal relative min-h-[460px] self-end max-md:min-h-[320px]" style={delay(0.1)} aria-hidden="true">
+          <div className="absolute bottom-22 left-1/2 w-[min(520px,100%)] -translate-x-1/2">
             {/* screen */}
             <div
               className={cn(
-                "relative flex aspect-[16/10] flex-col justify-center overflow-hidden rounded-t-2xl border-[7px] border-[#17201d] px-[8%] pb-[10%] pt-[8%] text-white",
+                "relative flex aspect-[14/8] flex-col justify-center overflow-hidden rounded-t-2xl border-[7px] border-[#17201d] px-[8%] pb-[10%] pt-[8%] text-white",
                 "bg-[linear-gradient(135deg,var(--color-forest),#1b5a4a)] shadow-[0_40px_80px_-30px_rgba(15,46,38,.55)]",
                 // camera dot + glass reflection
                 "before:absolute before:-top-1 before:left-1/2 before:z-[2] before:-ml-[2.5px] before:size-[5px] before:rounded-full before:bg-[#2b3531]",
                 "after:pointer-events-none after:absolute after:inset-0 after:bg-[linear-gradient(115deg,rgba(255,255,255,.22),transparent_38%)]",
               )}
             >
-              <b className="block font-serif text-[clamp(34px,4.4vw,56px)] font-semibold leading-[1.02]">
+              <b className="block font-serif text-[clamp(34px,4.4vw,45px)] font-semibold leading-[1.02]">
                 Build.<br />Organize.<br />Grow.
               </b>
             </div>

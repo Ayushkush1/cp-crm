@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Icon } from "./Icon";
-import { Avatar, SectionHead, wrap, sectionY } from "./ui";
+import { Avatar, Glow, SectionHead, wrap, sectionY } from "./ui";
 import { cn } from "@/lib/cn";
 
 // PLACEHOLDER testimonials carried over from the design reference. Replace with real customer quotes.
@@ -32,8 +32,9 @@ export function Testimonials() {
   };
 
   return (
-    <section className={cn(sectionY, "bg-gradient-to-b from-paper-2 to-paper")} id="stories">
-      <div className={wrap}>
+    <section className={cn(sectionY, "relative overflow-hidden")} id="stories">
+      <Glow />
+      <div className={cn(wrap, "relative")}>
         <SectionHead eyebrow="Trusted by founders" title="Loved by startup teams." sub="Real stories from real builders.">
           <div className="flex gap-2.5">
             <button className={arrowBtn} aria-label="Previous testimonials" onClick={() => step(-1)}><Icon name="left" /></button>

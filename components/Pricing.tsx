@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "./Icon";
-import { Btn, SectionHead, wrap, sectionY } from "./ui";
+import { Btn, Glow, SectionHead, wrap, sectionY } from "./ui";
 import { cn } from "@/lib/cn";
 import { delay } from "@/lib/utils";
 
@@ -32,8 +32,9 @@ export function Pricing() {
     cn("rounded-[10px] px-[18px] py-[9px] text-sm font-semibold transition duration-200", active ? "bg-forest text-white" : "text-ink-2");
 
   return (
-    <section className={sectionY} id="pricing">
-      <div className={wrap}>
+    <section className={cn(sectionY, "relative overflow-hidden")} id="pricing">
+      <Glow flip />
+      <div className={cn(wrap, "relative")}>
         <SectionHead eyebrow="Pricing" title="Simple, transparent pricing." sub="Choose a plan that fits your stage. Upgrade or downgrade anytime.">
           <div className="flex items-center gap-1 rounded-[14px] border border-line bg-white p-[5px]" role="group" aria-label="Billing period">
             <button className={toggleBtn(!yearly)} aria-pressed={!yearly} onClick={() => setYearly(false)}>Monthly</button>
