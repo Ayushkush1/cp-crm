@@ -96,6 +96,106 @@
   transform: none;
 }
 
+/* ---------- Hero entrance (plays once on load, not tied to scroll) ----------
+   Gated behind .js the same way .reveal is: if the inline script that adds
+   "js" never runs, these rules never match and the text just shows statically. */
+@keyframes hero-blur-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+@keyframes hero-chip-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.7) rotate(-6deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.05) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+@keyframes hero-sheen {
+  from {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(140%);
+    opacity: 0;
+  }
+}
+@keyframes hero-btn-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.92);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.js .hero-h1 {
+  animation: hero-blur-up 0.85s var(--ease-butter) 0.05s both;
+}
+.js .hero-p {
+  animation: hero-blur-up 0.7s var(--ease-butter) 0.55s both;
+}
+.js .hero-chip {
+  position: relative;
+  overflow: hidden;
+  animation: hero-chip-pop 0.6s var(--ease-soft) both;
+}
+.js .hero-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.75) 50%, transparent 65%);
+  transform: translateX(-140%);
+  animation: hero-sheen 0.9s var(--ease-soft) both;
+  pointer-events: none;
+}
+.js .hero-chip-1 {
+  animation-delay: 0.38s;
+}
+.js .hero-chip-1::after {
+  animation-delay: 0.95s;
+}
+.js .hero-chip-2 {
+  animation-delay: 0.5s;
+}
+.js .hero-chip-2::after {
+  animation-delay: 1.05s;
+}
+.js .hero-btn-1,
+.js .hero-btn-2 {
+  animation: hero-btn-pop 0.55s var(--ease-soft) both;
+}
+.js .hero-btn-1 {
+  animation-delay: 0.8s;
+}
+.js .hero-btn-2 {
+  animation-delay: 0.9s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -1,7 +1,6 @@
 import { HeroDashboard } from "./HeroDashboard";
 import { Btn, Hl, wrap } from "./ui";
 import { cn } from "@/lib/cn";
-import { delay } from "@/lib/utils";
 
 export function Hero() {
   return (
@@ -17,16 +16,16 @@ export function Hero() {
         )}
       >
         <div className="max-lg:max-w-[640px]">
-          <h1 className="reveal mb-[22px] mt-10 text-[clamp(40px,5.5vw,68px)]" style={delay(0.06)}>
-            Everything your <Hl tone="forest">startup</Hl> needs to{" "}
-            <Hl tone="brand">scale, together.</Hl>
+          <h1 className="hero-h1 mb-[22px] mt-10 text-[clamp(40px,5.5vw,68px)]">
+            Everything your <Hl tone="forest" className="hero-chip hero-chip-1">startup</Hl> needs to{" "}
+            <Hl tone="brand" className="hero-chip hero-chip-2">scale, together.</Hl>
           </h1>
-          <p className="reveal max-w-[520px] text-lg text-ink-2" style={delay(0.12)}>
+          <p className="hero-p max-w-[520px] text-lg text-ink-2">
             Manage leads, tasks, documents, payments and your team, all in one connected ecosystem.
           </p>
-          <div className="reveal mt-[30px] flex flex-wrap gap-2.5" style={delay(0.18)}>
-            <Btn href="#demo" size="lg" arrow className="max-xs:w-full">Get free demo</Btn>
-            <Btn href="#how" variant="light" size="lg" icon="play" className="max-xs:w-full">How it works</Btn>
+          <div className="mt-[30px] flex flex-wrap gap-2.5">
+            <Btn href="#demo" size="lg" arrow className="hero-btn-1 max-xs:w-full">Get free demo</Btn>
+            <Btn href="#how" variant="light" size="lg" icon="play" className="hero-btn-2 max-xs:w-full">How it works</Btn>
           </div>
         </div>
         <HeroDashboard />
