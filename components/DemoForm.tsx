@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Btn } from "./ui";
+import { CTA_EMAIL, CTA_READY } from "./CtaLaptop";
 import { cn } from "@/lib/cn";
 
 type Status = { kind: "idle" } | { kind: "ok" | "err"; text: string };
@@ -19,6 +20,7 @@ export function DemoForm() {
     }
     // TODO: connect to the real demo-provisioning endpoint, e.g.
     // await fetch("/api/demo", { method: "POST", body: JSON.stringify({ email: v }) })
+    window.dispatchEvent(new CustomEvent(CTA_READY, { detail: v }));
     setStatus({ kind: "ok", text: `You’re in! Check ${v} for your 24-hour demo access.` });
     setEmail("");
   };
@@ -40,7 +42,10 @@ export function DemoForm() {
           required
           value={email}
           aria-invalid={status.kind === "err" || undefined}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            window.dispatchEvent(new CustomEvent(CTA_EMAIL, { detail: e.target.value }));
+          }}
           className="min-w-0 flex-1 bg-transparent px-3.5 outline-none max-sm:px-2.5 max-sm:py-3"
         />
         <Btn type="submit" arrow>Get demo</Btn>
