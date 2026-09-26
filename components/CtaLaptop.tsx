@@ -228,7 +228,7 @@ function OrganizeScene() {
         </div>
       ))}
       {/* the moving card starts over the New column's third slot */}
-      <span className="cta-move absolute left-[5px] top-[64%] flex h-[17%] w-[calc((100%-12px)/3-10px)] items-center justify-between gap-1 rounded bg-white px-1.5 shadow-[0_8px_16px_-6px_rgba(0,0,0,.6)] ring-2 ring-brand-2">
+      <span className="cta-move absolute left-[5px] top-[52%] flex h-[16%] w-[calc((100%-12px)/3-10px)] items-center justify-between gap-1 rounded bg-white px-1.5 shadow-[0_8px_16px_-6px_rgba(0,0,0,.6)] ring-2 ring-brand-2">
         <b className="text-[8.5px] text-ink">₹48K</b>
         <span className="relative h-[11px] w-[26px] text-[6.5px] font-bold">
           <em className="cta-tag-hot absolute inset-0 grid place-items-center rounded-full bg-[#fde8d6] not-italic text-[#b85a14]">Hot</em>
