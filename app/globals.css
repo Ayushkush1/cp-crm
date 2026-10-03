@@ -336,6 +336,76 @@
   animation: hub-flow 1.6s linear infinite;
 }
 
+/* ---------- Features (Features.tsx): funnel drops, gauge, receipt, key swing ----------
+   Each element's resting style is its final state, so with reduced motion
+   (all animation removed below) everything still reads correctly. Drops are
+   decorative and simply stay hidden. Paused until the parent .reveal is in view. */
+@keyframes ft-drop {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  12%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+@keyframes ft-needle {
+  from {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(152deg);
+  }
+}
+@keyframes ft-arc {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+@keyframes ft-print {
+  from {
+    transform: translateY(-100%);
+  }
+}
+@keyframes ft-swing {
+  25% {
+    transform: rotate(5deg);
+  }
+  70% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes ft-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Duration and direction are set inline per gear so the teeth stay meshed. */
+[data-ft="spin"] {
+  animation: ft-spin 9s linear infinite;
+}
+[data-ft="drop"] {
+  opacity: 0;
+  animation: ft-drop 3.5s cubic-bezier(0.55, 0, 0.85, 0.6) infinite;
+}
+[data-ft="needle"] {
+  animation: ft-needle 1.8s var(--ease-butter) 0.3s both;
+}
+[data-ft="arc"] {
+  animation: ft-arc 1.8s var(--ease-butter) 0.3s both;
+}
+[data-ft="print"] {
+  animation: ft-print 1.6s var(--ease-soft) 0.3s both;
+}
+.js .reveal:not(.in) [data-ft] {
+  animation-play-state: paused;
+}
+
 /* ---------- CTA laptop (CtaLaptop.tsx): scenes, provisioning, burst ---------- */
 @keyframes cta-scene-in {
   from {
