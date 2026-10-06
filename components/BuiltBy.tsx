@@ -6,22 +6,6 @@ import { Hl, Tag, wrap, sectionY, type TagTone } from "./ui";
 import { cn } from "@/lib/cn";
 import { delay } from "@/lib/utils";
 
-/** Simple panda-face mark for Coding Pandas. */
-function Panda({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" className={cn("size-7", className)} aria-hidden="true">
-      <circle cx="8" cy="8" r="5" fill="#10201b" />
-      <circle cx="24" cy="8" r="5" fill="#10201b" />
-      <circle cx="16" cy="17.5" r="12" fill="#fff" stroke="#10201b" strokeWidth="1" />
-      <ellipse cx="11" cy="16" rx="3.2" ry="4" transform="rotate(-18 11 16)" fill="#10201b" />
-      <ellipse cx="21" cy="16" rx="3.2" ry="4" transform="rotate(18 21 16)" fill="#10201b" />
-      <circle cx="11.6" cy="16" r="1.1" fill="#fff" />
-      <circle cx="20.4" cy="16" r="1.1" fill="#fff" />
-      <ellipse cx="16" cy="21" rx="2" ry="1.4" fill="#10201b" />
-    </svg>
-  );
-}
-
 /* ------------------------------------------------------------------ */
 /* Before: a messy spreadsheet                                          */
 /* ------------------------------------------------------------------ */
@@ -330,7 +314,7 @@ export function BuiltBy() {
           <h2 className="mx-auto max-w-[980px] text-[clamp(30px,4.3vw,50px)] leading-[1.14]">
             We&apos;re{" "}
             <Hl tone="mint">
-              <Panda className="size-[.8em]" />
+              <img src="/darkicon.png" alt="" width={1024} height={1024} className="size-[.9em] shrink-0" />
               Coding Pandas
             </Hl>{" "}
             a full-stack software company that builds products for{" "}
