@@ -320,7 +320,7 @@ export function AiCrm() {
           <div>
             <Eyebrow tone="light">AI built in</Eyebrow>
             <h2 className="max-w-[640px]">
-              A CRM with an AI <Hl tone="brand"><Icon name="spark" className="size-[.7em]" />co-pilot</Hl> for every deal.
+              A CRM with an AI <Hl tone="brand">co-pilot</Hl> for every deal.
             </h2>
             <p className="mt-4 max-w-[520px] text-lg text-white/70">
               Build AI workflows, summarise documents, draft the right email and spot your next deal, all from the CRM your team already works in.

@@ -193,7 +193,7 @@ export function Hl({ tone, className, children }: { tone: keyof typeof hlTones; 
   return (
     <span
       className={cn(
-        "mx-[.06em] inline-flex items-center gap-[.25em] whitespace-nowrap rounded-full px-[.3em] align-middle font-medium italic",
+        "mx-[.06em] inline-flex items-center gap-[.25em] whitespace-nowrap rounded-full px-[.3em] pb-[.07em] align-middle font-medium italic",
         hlTones[tone],
         className,
       )}
