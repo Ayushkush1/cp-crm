@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 export type IconName =
   | "arrow" | "check" | "users" | "card" | "chart" | "doc" | "task" | "box"
   | "plug" | "sliders" | "inbox" | "target" | "user" | "trend" | "play"
-  | "menu" | "close" | "left" | "right" | "plus" | "star" | "logo";
+  | "menu" | "close" | "left" | "right" | "plus" | "star" | "logo" | "spark" | "mail";
 
 const symbols: Record<IconName, { viewBox: string; body: ReactNode }> = {
   arrow: { viewBox: "0 0 24 24", body: <path d="M5 12h14M12 5l7 7-7 7" /> },
@@ -31,6 +31,8 @@ const symbols: Record<IconName, { viewBox: string; body: ReactNode }> = {
   right: { viewBox: "0 0 24 24", body: <path d="m9 18 6-6-6-6" /> },
   plus: { viewBox: "0 0 24 24", body: <path d="M12 5v14M5 12h14" /> },
   star: { viewBox: "0 0 24 24", body: <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" fill="currentColor" stroke="none" /> },
+  spark: { viewBox: "0 0 24 24", body: <path d="M12 2c.8 5.4 1.6 6.6 7 10-5.4 3.4-6.2 4.6-7 10-.8-5.4-1.6-6.6-7-10 5.4-3.4 6.2-4.6 7-10z" fill="currentColor" stroke="none" /> },
+  mail: { viewBox: "0 0 24 24", body: (<><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" /></>) },
   logo: { viewBox: "0 0 32 32", body: <path d="M16 4 3 28h5.2l2.6-5.3h10.4l2.6 5.3H29zM12.6 18.4 16 11.5l3.4 6.9z" fill="currentColor" stroke="none" fillRule="evenodd" /> },
 };
 

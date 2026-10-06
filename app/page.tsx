@@ -4,6 +4,7 @@ import { BuiltBy } from "@/components/BuiltBy";
 import { Products } from "@/components/Products";
 import { How } from "@/components/How";
 import { Features } from "@/components/Features";
+import { AiCrm } from "@/components/AiCrm";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
 import { Faq } from "@/components/Faq";
@@ -22,6 +23,7 @@ export default function Home() {
         <Products />
         <How />
         <Features />
+        <AiCrm />
         <Testimonials />
         <Pricing />
         <Faq />

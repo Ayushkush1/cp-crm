@@ -406,6 +406,73 @@
   animation-play-state: paused;
 }
 
+/* ---------- AI section (AiCrm.tsx): scene pieces, document scan, tab timer ----------
+   Scenes remount when their tab opens, so these replay each time. Resting style
+   is the final state, so reduced motion (animations removed) still reads fine;
+   the tab timer then never ends, which also stops the auto-advance. */
+@keyframes ai-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+}
+@keyframes ai-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes ai-down {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes ai-scan {
+  0% {
+    top: -48px;
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@keyframes ai-ping {
+  0% {
+    box-shadow: 0 0 0 0 rgba(31, 157, 107, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 7px rgba(31, 157, 107, 0);
+  }
+}
+.ai-rise {
+  animation: ai-rise 0.6s var(--ease-butter) var(--o, 0s) both;
+}
+.ai-grow {
+  transform-origin: left;
+  animation: ai-grow 0.9s var(--ease-butter) var(--o, 0s) both;
+}
+.ai-down {
+  transform-origin: top;
+  animation: ai-down 1s var(--ease-soft) var(--o, 0s) both;
+}
+.ai-scan {
+  top: 100%;
+  opacity: 0;
+  animation: ai-scan 1.5s ease-in-out 0.1s 2 both;
+}
+.ai-ping {
+  animation: ai-ping 1.6s ease-out infinite;
+}
+.ai-timer {
+  transform-origin: left;
+  animation: ai-grow var(--dur, 8s) linear both;
+}
+
 /* ---------- CTA laptop (CtaLaptop.tsx): scenes, provisioning, burst ---------- */
 @keyframes cta-scene-in {
   from {
